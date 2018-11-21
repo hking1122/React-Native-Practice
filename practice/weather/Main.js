@@ -3,9 +3,9 @@ import {
     StyleSheet, 
     Text, 
     View,
-    TextInput,
     ImageBackground,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Platform,
 } from 'react-native';
 
 import SearchInput from './components/SearchInput';
@@ -15,11 +15,18 @@ export default class Main extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      
-    }
+      location:'Beijing',
+    };
   }
+
+  handleUpdateLocation = newLocation => {
+    this.setState({
+      location:newLocation,
+    });
+  }
+
   render() {
-    const location = "Beijing";
+    const {location} = this.state;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
@@ -33,7 +40,8 @@ export default class Main extends React.Component {
             <Text style={[styles.textStyle,styles.smallText]}>Showers</Text>
             <Text style={[styles.textStyle,styles.largeText]}>13°</Text>
             <SearchInput
-              placeholder = {"Search any city"}
+              placeholder="Search any city"
+              onSubmit={this.handleUpdateLocation}
             />
           </View>
         </ImageBackground>
