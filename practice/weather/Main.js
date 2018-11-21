@@ -4,23 +4,39 @@ import {
     Text, 
     View,
     TextInput,
+    ImageBackground,
     KeyboardAvoidingView
 } from 'react-native';
 
+import SearchInput from './components/SearchInput';
+import getImage from './utils/getImageForWeather';
+
 export default class Main extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      
+    }
+  }
   render() {
+    const location = "Beijing";
+
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
-        <Text style={[styles.textStyle,styles.largeText]}>Shanghai</Text>
-        <Text style={[styles.textStyle,styles.smallText]}>Showers</Text>
-        <Text style={[styles.textStyle,styles.largeText]}>13°</Text>
-        <TextInput 
-          style={styles.textbox}
-          placeholder="Search any city"
-          placeholderTextColor="white"
-          clearButtonMode="always"
-          underlineColorAndroid="transparent"
-        />
+        <ImageBackground
+          source={getImage('Showers')}
+          style={styles.container}
+          imageStyle={styles.image}
+        >
+          <View style={styles.subContainer}>
+            <Text style={[styles.textStyle,styles.largeText]}>{location}</Text>
+            <Text style={[styles.textStyle,styles.smallText]}>Showers</Text>
+            <Text style={[styles.textStyle,styles.largeText]}>13°</Text>
+            <SearchInput
+              placeholder = {"Search any city"}
+            />
+          </View>
+        </ImageBackground>
       </KeyboardAvoidingView>
     );
   }
@@ -29,8 +45,13 @@ export default class Main extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#24495E'
+  },
+  subContainer:{
+    flex:1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal:20
   },
   largeText:{
     fontSize:36,
@@ -39,19 +60,15 @@ const styles = StyleSheet.create({
     fontSize:14,
   },
   textStyle:{
-    //alignSelf:'center',
     textAlign:'center'
   },
-  textbox:{
-    width:300,
-    height:40,
-    borderRadius:5,
-    backgroundColor:'#666',
-    color:'white',
-    marginTop:20,
-    marginHorizontal:20,
-    paddingHorizontal:10,
-    alignSelf:'center'
+  imageContainer:{
+    flex:1
+  },
+  image:{
+    flex:1,
+    width:null,
+    height:null,
+    resizeMode:'cover'
   }
-
 });
