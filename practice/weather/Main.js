@@ -6,8 +6,11 @@ import {
     ImageBackground,
     KeyboardAvoidingView,
     Platform,
+    ActivityIndicator,
+    StatusBar
 } from 'react-native';
 
+import { fetchLocationId,fetchWeather } from './utils/api';
 import SearchInput from './components/SearchInput';
 import getImage from './utils/getImageForWeather';
 
@@ -16,14 +19,40 @@ export default class Main extends React.Component {
     super(props);
     this.state={
       location:'Beijing',
+      loading:false,
+      error:false,
+      temperature:0,
+      weather:'',
     };
   }
 
-  handleUpdateLocation = newLocation => {
-    this.setState({
-      location:newLocation,
+  handleUpdateLocation = async newLocation => {
+    if (!newLocation) return;
+
+    this.setState({loading:true}, async () => {
+      try{
+        const locationId = await fetchLocationId(newLocation);
+        const { location, weather, temperature } = await fetchWeather(
+          locationId
+        );
+
+        this.setState({
+          loading: false,
+          error: false,
+          location,
+          weather,
+          temperature,
+        });
+
+      } catch(e) {
+        this.setState({
+          loading: false,
+          error: true,
+        });
+      }
     });
-  }
+
+  };
 
   render() {
     const {location} = this.state;
