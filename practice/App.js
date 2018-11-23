@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './weather/Main';
+import Main from './timer/Main';
 
 
 export default class App extends React.Component {
