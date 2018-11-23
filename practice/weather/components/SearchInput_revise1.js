@@ -1,13 +1,20 @@
-import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 export default class SearchInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: '',
-    };
-  }
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+  };
+
+  static defaultProps = {
+    placeholder: '',
+  };
+
+  state = {
+    text: '',
+  };
 
   handleChangeText = text => {
     this.setState({ text });
@@ -36,9 +43,10 @@ export default class SearchInput extends React.Component {
           placeholderTextColor="white"
           underlineColorAndroid="transparent"
           style={styles.textInput}
-          clearButtonMode="always"
           onChangeText={this.handleChangeText}
           onSubmitEditing={this.handleSubmitEditing}
+          clearButtonMode={"always"}
+
         />
       </View>
     );
@@ -48,7 +56,6 @@ export default class SearchInput extends React.Component {
 const styles = StyleSheet.create({
   container: {
     height: 40,
-    width:300,
     marginTop: 20,
     backgroundColor: '#666',
     marginHorizontal: 40,
