@@ -104,14 +104,6 @@ export default class Main extends React.Component{
                             </View>
                         )
                         }
-
-{/*                             <View>
-                                <Text style={[styles.txtLarge,styles.txtStyle]}>{location}</Text>
-                                <Text style={[styles.txtSmall,styles.txtStyle]}>{weather}</Text>
-                                <Text style={[styles.txtLarge,styles.txtStyle]}>{`${Math.round(temperature)}°`}</Text>
-                                <Text style={[styles.txtSmall,styles.txtStyle]}>{weather}</Text>
-                                <Text style={[styles.txtLarge,styles.txtStyle]}>{`${Math.round(temperature)}°`}</Text>
-                            </View> */}
                         <View style={styles.txtInput}>
                             <TextInput
                                 style={{flex: 1,color:'white'}}
