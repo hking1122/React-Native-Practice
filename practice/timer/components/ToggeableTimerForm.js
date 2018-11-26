@@ -21,7 +21,7 @@ export default class ToggleableTimerForm extends React.Component {
         );
     };
 
-    handleFormSubmit = () =>{
+    handleFormSubmit = (timer) =>{
         const { onFormSubmit } = this.props;
         onFormSubmit(timer);
         this.setState({
