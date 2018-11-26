@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './timer/Main';
+import Main from './instagram/Main';
 
 
 export default class App extends React.Component {

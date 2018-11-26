@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Weather",
+    "name": "Instagram",
     "description": "",
-    "slug": "weather",
+    "slug": "Instagram",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
